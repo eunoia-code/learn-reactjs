@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Post from "./Post"
 import styles from "./PostsList.module.css"
 import NewPost from "./NewPost"
+import Modal from './Modal';
 
 export default function PostsList() {
 
@@ -18,7 +19,9 @@ export default function PostsList() {
 
   return (
     <>
-      <NewPost onContentChange={contentChangeHandler} onNameChange={nameChangeHandler} />
+      <Modal>
+        <NewPost onContentChange={contentChangeHandler} onNameChange={nameChangeHandler} />
+      </Modal>
       <ul className={styles.posts}>
         <Post name={nameValue} content={contentValue} />
         <Post name="Arteezy" content="Man Upon A Cliffs" />
