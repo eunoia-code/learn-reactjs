@@ -8,6 +8,11 @@ export default function PostsList() {
 
   const [contentValue, setContentValue] = useState('')
   const [nameValue, setNameValue] = useState('')
+  const [modalIsVisible, setModalIsVisible] = useState(true)
+
+  function modalHandler(){
+    setModalIsVisible(false)
+  }
 
   function contentChangeHandler(event) {
     setContentValue(event.target.value)
@@ -17,11 +22,20 @@ export default function PostsList() {
     setNameValue(event.target.value)
   }
 
+  // let modalContent;
+  // if(modalIsVisible){
+  //   modalContent = <Modal onClose={modalHandler}>
+  //                   <NewPost onContentChange={contentChangeHandler} onNameChange={nameChangeHandler} />
+  //                 </Modal>
+  // }
+
   return (
     <>
-      <Modal>
-        <NewPost onContentChange={contentChangeHandler} onNameChange={nameChangeHandler} />
-      </Modal>
+      { modalIsVisible && (
+        <Modal onClose={modalHandler}>
+          <NewPost onContentChange={contentChangeHandler} onNameChange={nameChangeHandler} />
+        </Modal>
+      )}
       <ul className={styles.posts}>
         <Post name={nameValue} content={contentValue} />
         <Post name="Arteezy" content="Man Upon A Cliffs" />
