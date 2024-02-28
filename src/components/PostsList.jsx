@@ -4,15 +4,10 @@ import styles from "./PostsList.module.css"
 import NewPost from "./NewPost"
 import Modal from './Modal';
 
-export default function PostsList() {
+export default function PostsList({isPosting, onStopPosting}) {
 
   const [contentValue, setContentValue] = useState('')
   const [nameValue, setNameValue] = useState('')
-  const [modalIsVisible, setModalIsVisible] = useState(true)
-
-  function modalHandler(){
-    setModalIsVisible(false)
-  }
 
   function contentChangeHandler(event) {
     setContentValue(event.target.value)
@@ -31,8 +26,8 @@ export default function PostsList() {
 
   return (
     <>
-      { modalIsVisible && (
-        <Modal onClose={modalHandler}>
+      { isPosting && (
+        <Modal onClose={onStopPosting}>
           <NewPost onContentChange={contentChangeHandler} onNameChange={nameChangeHandler} />
         </Modal>
       )}
