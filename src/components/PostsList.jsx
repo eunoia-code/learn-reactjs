@@ -5,12 +5,18 @@ import NewPost from "./NewPost"
 import Modal from './Modal';
 
 export default function PostsList({isPosting, onStopPosting}) {
+  const [posts, setPosts] = useState([])
+  
+  function addPostHandler(postData) {
+    setPosts((existingPosts) => [postData, ...existingPosts])
+  }
 
   return (
     <>
       { isPosting && (
         <Modal onClose={onStopPosting}>
           <NewPost 
+            onAddPost={addPostHandler}
             onCancel={onStopPosting}
           />
         </Modal>

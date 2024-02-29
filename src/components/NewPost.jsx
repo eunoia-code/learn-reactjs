@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './NewPost.module.css';
 
-export default function NewPost({onCancel}) {
+export default function NewPost({onAddPost, onCancel}) {
 
   const [contentValue, setContentValue] = useState('')
   const [nameValue, setNameValue] = useState('')
@@ -20,8 +20,8 @@ export default function NewPost({onCancel}) {
       content: contentValue,
       name: nameValue
     }
-    console.log(postData)
 
+    onAddPost(postData)
     onCancel()
   }
 
