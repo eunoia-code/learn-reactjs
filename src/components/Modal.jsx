@@ -1,10 +1,10 @@
-import classes from './Modal.module.css'
+import styles from './Modal.module.css'
 
 export default function Modal({children, onClose}) {
   return (
     <>
-      <div className={classes.backdrop} onClick={onClose} />
-      <dialog open className={classes.modal}>
+      <div className={styles.backdrop} onClick={onClose} />
+      <dialog open className={styles.modal}>
         {children}
       </dialog>
     </>

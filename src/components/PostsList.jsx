@@ -28,7 +28,11 @@ export default function PostsList({isPosting, onStopPosting}) {
     <>
       { isPosting && (
         <Modal onClose={onStopPosting}>
-          <NewPost onContentChange={contentChangeHandler} onNameChange={nameChangeHandler} />
+          <NewPost 
+            onContentChange={contentChangeHandler} 
+            onNameChange={nameChangeHandler} 
+            onCancel={onStopPosting}
+          />
         </Modal>
       )}
       <ul className={styles.posts}>
