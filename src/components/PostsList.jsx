@@ -22,7 +22,7 @@ export default function PostsList() {
       { posts.length > 0 && (
           <ul className={styles.posts}>
             {posts.map((post) => (
-              <Post key={post.id} name={post.name} content={post.content} />
+              <Post key={post.id} id={post.id} name={post.name} content={post.content} />
             ))}
           </ul>
       )}
